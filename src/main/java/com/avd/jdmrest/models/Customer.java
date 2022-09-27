@@ -1,4 +1,4 @@
-package com.avd.jdmrest.model;
+package com.avd.jdmrest.models;
 
 public class Customer {
 

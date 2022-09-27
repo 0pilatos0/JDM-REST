@@ -1,4 +1,4 @@
-package com.avd.jdmrest.controller;
+package com.avd.jdmrest.controllers;
 
 public interface ControllerInterface {
 }

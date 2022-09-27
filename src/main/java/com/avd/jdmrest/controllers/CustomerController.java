@@ -1,6 +1,6 @@
-package com.avd.jdmrest.controller;
+package com.avd.jdmrest.controllers;
 
-import com.avd.jdmrest.model.Customer;
+import com.avd.jdmrest.models.Customer;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
