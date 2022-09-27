@@ -5,9 +5,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
 public class JdmRestApplication {
-
-	public static void main(String[] args) {
-		SpringApplication.run(JdmRestApplication.class, args);
-	}
-
+    public static void main(String[] args) {
+        SpringApplication.run(JdmRestApplication.class, args);
+    }
 }
