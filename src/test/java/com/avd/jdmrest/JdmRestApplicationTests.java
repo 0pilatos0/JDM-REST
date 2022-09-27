@@ -1,4 +1,4 @@
-package com.pilatos.jdmrest;
+package com.avd.jdmrest;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;

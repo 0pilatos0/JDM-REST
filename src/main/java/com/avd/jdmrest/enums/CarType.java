@@ -1,4 +1,4 @@
-package com.pilatos.jdmrest.enums;
+package com.avd.jdmrest.enums;
 
 public enum CarType {
     ICE, BEV, FCEV

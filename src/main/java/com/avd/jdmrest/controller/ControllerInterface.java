@@ -1,4 +1,4 @@
-package com.pilatos.jdmrest.controller;
+package com.avd.jdmrest.controller;
 
 public interface ControllerInterface {
 }

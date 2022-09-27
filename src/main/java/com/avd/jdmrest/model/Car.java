@@ -1,7 +1,7 @@
-package com.pilatos.jdmrest.model;
+package com.avd.jdmrest.model;
 
-import com.pilatos.jdmrest.enums.Brand;
-import com.pilatos.jdmrest.enums.CarType;
+import com.avd.jdmrest.enums.Brand;
+import com.avd.jdmrest.enums.CarType;
 
 public class Car {
     private String licensePlate;
