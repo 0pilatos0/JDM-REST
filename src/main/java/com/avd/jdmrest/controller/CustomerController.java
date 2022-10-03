@@ -1,6 +1,6 @@
 package com.avd.jdmrest.controller;
 
-import com.avd.jdmrest.entities.Customer;
+import com.avd.jdmrest.domain.Customer;
 import com.avd.jdmrest.services.CustomerService;
 import org.springframework.web.bind.annotation.*;
 

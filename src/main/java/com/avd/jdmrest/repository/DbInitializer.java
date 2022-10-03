@@ -1,6 +1,6 @@
 package com.avd.jdmrest.repository;
 
-import com.avd.jdmrest.entities.Customer;
+import com.avd.jdmrest.domain.Customer;
 import org.springframework.stereotype.Component;
 
 @Component
