@@ -30,4 +30,9 @@ public class CustomerController {
 	public Customer createCustomer(@RequestBody Customer customer) {
 		return customerService.createCustomer(customer);
 	}
+
+	@DeleteMapping("/{id}")
+	public void deleteCustomer(@PathVariable Long id) {
+		customerService.deleteById(id);
+	}
 }

@@ -2,6 +2,8 @@ package com.avd.jdmrest.domain;
 
 import lombok.Getter;
 import lombok.Setter;
+import org.hibernate.annotations.OnDelete;
+import org.hibernate.annotations.OnDeleteAction;
 
 import javax.persistence.*;
 import javax.persistence.Entity;
@@ -24,8 +26,9 @@ public class CarListing {
     public String color;
     public int price;
     public double costPerKilometer;
-    @ManyToOne
+    @ManyToOne()
     @JoinColumn(name = "owner_id")
+    @OnDelete(action = OnDeleteAction.CASCADE)
     private Customer owner;
     public int seats;
     public String description;

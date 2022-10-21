@@ -6,13 +6,15 @@ import com.avd.jdmrest.domain.CarType;
 import com.avd.jdmrest.domain.Customer;
 import org.springframework.stereotype.Component;
 
+import java.time.LocalDate;
+
 @Component
 public class DbInitializer {
     public DbInitializer(CustomerRepository customerRepository, CarListingRepository carListingRepository) {
         //super coole initializer ding die er voor zorgt dat er iets van testdata is
-        Customer customer1 = new Customer("John");
-        Customer customer2 = new Customer("Jane");
-        Customer customer3 = new Customer("Jack");
+        Customer customer1 = new Customer("John",  LocalDate.of(1990, 1, 1), "1234", "1234");
+        Customer customer2 = new Customer("Jane",  LocalDate.of(1990, 1, 1), "1234", "1234");
+        Customer customer3 = new Customer("Jack",  LocalDate.of(1990, 1, 1), "1234", "1234");
 
         customerRepository.save(customer1);
         customerRepository.save(customer2);

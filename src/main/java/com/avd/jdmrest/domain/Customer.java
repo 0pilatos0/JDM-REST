@@ -3,10 +3,8 @@ package com.avd.jdmrest.domain;
 import lombok.Getter;
 import lombok.Setter;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
+import java.time.LocalDate;
 
 @Entity
 public class Customer {
@@ -19,11 +17,20 @@ public class Customer {
 	@Setter
 	private String username;
 
+	@Getter
+	@Setter
+	private LocalDate dateOfBirth;
+	public String address;
+	public String phoneNumber;
+
 	public Customer() {
 	}
 
-	public Customer(String username) {
+	public Customer(String username, LocalDate dateOfBirth, String address, String phoneNumber) {
 		this.username = username;
+		this.dateOfBirth = dateOfBirth;
+		this.address = address;
+		this.phoneNumber = phoneNumber;
 	}
 }
 
