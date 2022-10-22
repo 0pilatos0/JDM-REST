@@ -21,16 +21,32 @@ public class CarListing {
     @Getter
     @Setter
     private String licensePlate;
+    @Getter
+    @Setter
     public Brand brand;
+    @Getter
+    @Setter
     public CarType carType;
+    @Getter
+    @Setter
     public String color;
+    @Getter
+    @Setter
     public int price;
+    @Getter
+    @Setter
     public double costPerKilometer;
+    @Getter
+    @Setter
     @ManyToOne()
     @JoinColumn(name = "owner_id")
     @OnDelete(action = OnDeleteAction.CASCADE)
     private Customer owner;
+    @Getter
+    @Setter
     public int seats;
+    @Getter
+    @Setter
     public String description;
 
     public CarListing() {

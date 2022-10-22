@@ -39,8 +39,6 @@ public class CustomerController {
 		}
 	}
 
-
-
 	@PutMapping("/{id}")
 	public ResponseEntity<Customer> updateCustomer(@PathVariable Long id, @RequestBody Customer customer) {
 		if (customerService.getById(id).isPresent()) {
