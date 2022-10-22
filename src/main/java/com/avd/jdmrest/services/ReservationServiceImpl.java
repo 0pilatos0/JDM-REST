@@ -27,7 +27,7 @@ public class ReservationServiceImpl implements ReservationService{
 
     /**
      * @InheritDoc
-     * @param reservation
+     * @param reservation reservation
      * @return Reservation
      */
     @Override
@@ -37,7 +37,7 @@ public class ReservationServiceImpl implements ReservationService{
 
     /**
      * @InheritDoc
-     * @param id
+     * @param id reservation id
      * @return Optional<Reservation>
      */
 
@@ -48,7 +48,7 @@ public class ReservationServiceImpl implements ReservationService{
 
     /**
      * @InheritDoc
-     * @param id
+     * @param id reservation id
      * @return void
      */
     @Override

@@ -26,7 +26,7 @@ public class CarListingServiceImpl implements CarListingService
 
 	/**
 	 * @InheritDoc
-	 * @param id
+	 * @param id carListing id
 	 * @return Optional<CarListing>
 	 */
 	@Override
@@ -36,7 +36,7 @@ public class CarListingServiceImpl implements CarListingService
 
 	/**
 	 * @InheritDoc
-	 * @param carListing
+	 * @param carListing carListing
 	 * @return CarListing
 	 */
 	@Override
@@ -46,7 +46,7 @@ public class CarListingServiceImpl implements CarListingService
 
 	/**
 	 * @InheritDoc
-	 * @param id
+	 * @param id carListing id
 	 */
 	@Override
 	public void deleteById(Long id) {

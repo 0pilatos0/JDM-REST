@@ -27,8 +27,8 @@ public class CustomerServiceImpl implements CustomerService {
 
     /**
      * @InheritDoc
-     * @param id
-     * @return Customer
+     * @param id customer id
+     * @return Iterable<Customer>
      */
     @Override
     public Optional<Customer> getById(Long id) {
@@ -37,8 +37,8 @@ public class CustomerServiceImpl implements CustomerService {
 
     /**
      * @InheritDoc
-     * @param customer
-     * @return Customer
+     * @param customer customer
+     * @return Optional<Customer>
      */
 
     @Override
@@ -48,7 +48,7 @@ public class CustomerServiceImpl implements CustomerService {
 
     /**
      * @InheritDoc
-     * @param id
+     * @param id customer id
      * @return void
      */
     @Override

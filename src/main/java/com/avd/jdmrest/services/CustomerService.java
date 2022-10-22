@@ -14,14 +14,14 @@ public interface CustomerService
 
 	/**
 	 * Get customer by id
-	 * @param id
+	 * @param id customer id
 	 * @return Optional<Customer>
 	 */
 	Optional<Customer> getById(Long id);
 
 	/**
 	 * Create a new customer
-	 * @param customer
+	 * @param customer customer
 	 * @return Customer
 	 */
 
@@ -29,7 +29,7 @@ public interface CustomerService
 
 	/**
 	 * Delete customer by id
-	 * @param id
+	 * @param id customer id
 	 * @return void
 	 */
 

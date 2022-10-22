@@ -14,14 +14,14 @@ public interface CarListingService
 
 	/**
 	 * Get car listing by id
-	 * @param id
+	 * @param id carListing id
 	 * @return Optional<CarListing>
 	 */
 	Optional<CarListing> getById(Long id);
 
 	/**
 	 * Create a new car listing
-	 * @param carListing
+	 * @param carListing carListing
 	 * @return CarListing
 	 */
 
@@ -29,7 +29,7 @@ public interface CarListingService
 
 	/**
 	 * Delete car listing by id
-	 * @param id
+	 * @param id carListing id
 	 * @return void
 	 */
 

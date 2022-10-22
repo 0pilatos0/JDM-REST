@@ -14,7 +14,7 @@ public interface ReservationService {
 
     /**
      * Create a new reservation
-     * @param reservation
+     * @param reservation reservation
      * @return Reservation
      */
 
@@ -22,7 +22,7 @@ public interface ReservationService {
 
     /**
      * Get reservation by id
-     * @param id
+     * @param id reservation id
      * @return Optional<Reservation>
      */
 
@@ -30,7 +30,7 @@ public interface ReservationService {
 
     /**
      * Delete reservation by id
-     * @param id
+     * @param id reservation id
      * @return void
      */
 
