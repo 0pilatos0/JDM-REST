@@ -6,10 +6,32 @@ import java.util.Optional;
 
 public interface CustomerService
 {
+	/**
+	 * Get all customers
+	 * @return Iterable<Customer>
+	 */
 	Iterable<Customer> getAll();
+
+	/**
+	 * Get customer by id
+	 * @param id
+	 * @return Optional<Customer>
+	 */
 	Optional<Customer> getById(Long id);
 
-	Customer createCustomer(Customer user);
+	/**
+	 * Create a new customer
+	 * @param customer
+	 * @return Customer
+	 */
+
+	Customer createCustomer(Customer customer);
+
+	/**
+	 * Delete customer by id
+	 * @param id
+	 * @return void
+	 */
 
 	void deleteById(Long id);
 }

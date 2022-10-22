@@ -15,21 +15,42 @@ public class CustomerServiceImpl implements CustomerService {
         this.customerRepository = customerRepository;
     }
 
+
+    /**
+     * @InheritDoc
+     * @return Iterable<Customer>
+     */
     @Override
     public Iterable<Customer> getAll() {
         return customerRepository.findAll();
     }
 
+    /**
+     * @InheritDoc
+     * @param id
+     * @return Customer
+     */
     @Override
     public Optional<Customer> getById(Long id) {
         return customerRepository.findById(id);
     }
 
+    /**
+     * @InheritDoc
+     * @param customer
+     * @return Customer
+     */
+
     @Override
-    public Customer createCustomer(Customer User) {
-        return customerRepository.save(User);
+    public Customer createCustomer(Customer customer) {
+        return customerRepository.save(customer);
     }
 
+    /**
+     * @InheritDoc
+     * @param id
+     * @return void
+     */
     @Override
     public void deleteById(Long id) {
         customerRepository.deleteById(id);
