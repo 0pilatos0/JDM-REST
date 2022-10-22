@@ -63,4 +63,17 @@ public class ReservationController {
             return ResponseEntity.notFound().build();
         }
     }
+
+    @PutMapping("/final/{id}")
+    public ResponseEntity<Reservation> finalReservation(@PathVariable Long id) {
+        if(reservationService.getById(id).isPresent()) {
+            Reservation reservationToUpdate = reservationService.getById(id).get();
+            reservationToUpdate.setReservationFinal(true);
+            reservationService.createReservation(reservationToUpdate);
+            return ResponseEntity.ok(reservationToUpdate);
+        }
+        else {
+            return ResponseEntity.notFound().build();
+        }
+    }
 }
