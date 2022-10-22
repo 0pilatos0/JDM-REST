@@ -47,7 +47,6 @@ public class CarListingServiceImpl implements CarListingService
 	/**
 	 * @InheritDoc
 	 * @param id
-	 * @return void
 	 */
 	@Override
 	public void deleteById(Long id) {

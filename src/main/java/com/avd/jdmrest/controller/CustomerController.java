@@ -17,18 +17,31 @@ public class CustomerController {
 		this.customerService = customerService;
 	}
 
+	/**
+	 * retrieve all customers
+	 * @return
+	 */
 	@GetMapping
 	public Iterable<Customer> getAllCustomers() {
 		return customerService.getAll();
 	}
 
 
-
+	/**
+	 * create a new customer
+	 * @param customer
+	 * @return
+	 */
 	@PostMapping
 	public Customer createCustomer(@RequestBody Customer customer) {
 		return customerService.createCustomer(customer);
 	}
 
+	/**
+	 * retrieves a customer by id
+	 * @param id
+	 * @return
+	 */
 	@DeleteMapping("/{id}")
 	public ResponseEntity<String> deleteCustomer(@PathVariable Long id) {
 		if (customerService.getById(id).isPresent()) {
@@ -39,6 +52,11 @@ public class CustomerController {
 		}
 	}
 
+	/**
+	 * delete customer by id
+	 * @param id
+	 * @return ResponseEntity
+	 */
 	@PutMapping("/{id}")
 	public ResponseEntity<Customer> updateCustomer(@PathVariable Long id, @RequestBody Customer customer) {
 		if (customerService.getById(id).isPresent()) {
@@ -55,6 +73,11 @@ public class CustomerController {
 		}
 	}
 
+	/**
+	 * update customer by id
+	 * @param id
+	 * @return ResponseEntity
+	 */
 	@GetMapping("/{id}")
 	public ResponseEntity<Customer> getCustomerById(@PathVariable Long id) {
 		if (customerService.getById(id).isPresent()) {

@@ -16,21 +16,43 @@ public class ReservationController {
         this.reservationService = reservationService;
     }
 
+    /**
+     * retrieve all reservations
+     * @return
+     */
+
     @GetMapping
     public Iterable<Reservation> getAllReservations() {
         return reservationService.getAll();
     }
 
+    /**
+     * create a new reservation
+     * @param reservation
+     * @return
+     */
     @PostMapping
     public Reservation createReservation(@RequestBody Reservation reservation) {
         return reservationService.createReservation(reservation);
     }
+
+    /**
+     * retrieves a reservation by id
+     * @param id
+     * @return
+     */
 
     @GetMapping("/{id}")
     public Optional<Reservation> getReservationById(@PathVariable Long id) {
         return reservationService.getById(id);
     }
 
+
+    /**
+     * delete reservation by id
+     * @param id
+     * @return ResponseEntity
+     */
     @DeleteMapping("/{id}")
     public ResponseEntity<String> deleteReservationById(@PathVariable Long id) {
         if(reservationService.getById(id).isPresent()) {
@@ -41,6 +63,13 @@ public class ReservationController {
             return ResponseEntity.notFound().build();
         }
     }
+
+    /**
+     * update a reservation based of the id
+     * @param id
+     * @param reservation
+     * @return
+     */
 
     @PutMapping("/{id}")
     public ResponseEntity<Reservation> updateReservation(@PathVariable Long id, @RequestBody Reservation reservation) {
@@ -64,6 +93,12 @@ public class ReservationController {
         }
     }
 
+
+    /**
+     * finalizes a reservation by setting the reservationFinal field to true
+     * @param id
+     * @return
+     */
     @PutMapping("/final/{id}")
     public ResponseEntity<Reservation> finalReservation(@PathVariable Long id) {
         if(reservationService.getById(id).isPresent()) {
