@@ -20,7 +20,12 @@ public class Customer {
 	@Getter
 	@Setter
 	private LocalDate dateOfBirth;
+
+	@Getter
+	@Setter
 	public String address;
+	@Getter
+	@Setter
 	public String phoneNumber;
 
 	public Customer() {

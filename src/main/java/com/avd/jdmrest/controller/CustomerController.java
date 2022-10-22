@@ -22,10 +22,7 @@ public class CustomerController {
 		return customerService.getAll();
 	}
 
-	@GetMapping("/{id}")
-	public Optional<Customer> getCustomerById(@PathVariable Long id) {
-		return customerService.getById(id);
-	}
+
 
 	@PostMapping
 	public Customer createCustomer(@RequestBody Customer customer) {
@@ -37,6 +34,33 @@ public class CustomerController {
 		if (customerService.getById(id).isPresent()) {
 			customerService.deleteById(id);
 			return ResponseEntity.ok("Customer deleted");
+		} else {
+			return ResponseEntity.notFound().build();
+		}
+	}
+
+
+
+	@PutMapping("/{id}")
+	public ResponseEntity<Customer> updateCustomer(@PathVariable Long id, @RequestBody Customer customer) {
+		if (customerService.getById(id).isPresent()) {
+			Customer customerToUpdate = customerService.getById(id).get();
+			customerToUpdate.setUsername(customer.getUsername());
+			customerToUpdate.setAddress(customer.getAddress());
+			customerToUpdate.setDateOfBirth(customer.getDateOfBirth());
+			customerToUpdate.setPhoneNumber(customer.getPhoneNumber());
+
+			customerService.createCustomer(customerToUpdate);
+			return ResponseEntity.ok(customerToUpdate);
+		} else {
+			return ResponseEntity.notFound().build();
+		}
+	}
+
+	@GetMapping("/{id}")
+	public ResponseEntity<Customer> getCustomerById(@PathVariable Long id) {
+		if (customerService.getById(id).isPresent()) {
+			return ResponseEntity.ok(customerService.getById(id).get());
 		} else {
 			return ResponseEntity.notFound().build();
 		}
