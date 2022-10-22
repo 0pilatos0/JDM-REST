@@ -101,4 +101,13 @@ public class CarListingController {
             return ResponseEntity.notFound().build();
         }
     }
+
+    @GetMapping("/cpk/{id}")
+    public ResponseEntity<Double> getCPKM(@PathVariable Long id) {
+        if (carListingService.getById(id).isPresent()) {
+            return ResponseEntity.ok(carListingService.getById(id).get().costPerKilometer);
+        } else {
+            return ResponseEntity.notFound().build();
+        }
+    }
 }
