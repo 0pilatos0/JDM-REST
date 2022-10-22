@@ -1,6 +1,8 @@
 package com.avd.jdmrest.domain;
 
 import lombok.Getter;
+import org.hibernate.annotations.OnDelete;
+import org.hibernate.annotations.OnDeleteAction;
 
 import javax.persistence.*;
 import java.time.LocalDate;
@@ -19,9 +21,13 @@ public class Reservation {
     public String termsAndConditions;
 
     @ManyToOne()
+    @JoinColumn(name = "customer_id")
+    @OnDelete(action = OnDeleteAction.CASCADE)
     public Customer renter;
 
     @OneToOne()
+    @JoinColumn(name = "car_id")
+    @OnDelete(action = OnDeleteAction.CASCADE)
     public CarListing carListing;
 
     public Reservation() {

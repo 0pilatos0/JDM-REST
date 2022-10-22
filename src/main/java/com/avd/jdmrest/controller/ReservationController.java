@@ -2,6 +2,7 @@ package com.avd.jdmrest.controller;
 
 import com.avd.jdmrest.domain.Reservation;
 import com.avd.jdmrest.services.ReservationService;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.Optional;
@@ -31,7 +32,13 @@ public class ReservationController {
     }
 
     @DeleteMapping("/{id}")
-    public void deleteReservationById(@PathVariable Long id) {
-        reservationService.deleteReservationById(id);
+    public ResponseEntity<String> deleteReservationById(@PathVariable Long id) {
+        if(reservationService.getById(id).isPresent()) {
+            reservationService.deleteReservationById(id);
+            return ResponseEntity.ok("Reservation deleted");
+        }
+        else {
+            return ResponseEntity.notFound().build();
+        }
     }
 }
