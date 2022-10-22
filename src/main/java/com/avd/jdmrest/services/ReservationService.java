@@ -10,4 +10,6 @@ public interface ReservationService {
     Reservation createReservation(Reservation reservation);
 
     Optional<Reservation> getById(Long id);
+
+    void deleteReservationById(Long id);
 }

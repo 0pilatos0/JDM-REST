@@ -25,9 +25,9 @@ public class DbInitializer {
         carListingRepository.save(carListing2);
         carListingRepository.save(carListing3);
 
-        Reservation reservation1 = new Reservation(LocalDate.of(2020, 1, 1), LocalDate.of(2020, 1, 8), true, "I agree to the terms and conditions", customer1);
-        Reservation reservation2 = new Reservation(LocalDate.of(2020, 1, 1), LocalDate.of(2020, 1, 8), true, "I agree to the terms and conditions", customer2);
-        Reservation reservation3 = new Reservation(LocalDate.of(2020, 1, 1), LocalDate.of(2020, 1, 8), true, "I agree to the terms and conditions", customer3);
+        Reservation reservation1 = new Reservation(LocalDate.of(2020, 1, 1), LocalDate.of(2020, 1, 8), true, "I agree to the terms and conditions", customer1, carListing1);
+        Reservation reservation2 = new Reservation(LocalDate.of(2020, 1, 1), LocalDate.of(2020, 1, 8), true, "I agree to the terms and conditions", customer2, carListing2);
+        Reservation reservation3 = new Reservation(LocalDate.of(2020, 1, 1), LocalDate.of(2020, 1, 8), true, "I agree to the terms and conditions", customer3, carListing3);
 
         reservationRepository.save(reservation1);
         reservationRepository.save(reservation2);

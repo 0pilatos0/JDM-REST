@@ -29,4 +29,9 @@ public class ReservationController {
     public Optional<Reservation> getReservationById(@PathVariable Long id) {
         return reservationService.getById(id);
     }
+
+    @DeleteMapping("/{id}")
+    public void deleteReservationById(@PathVariable Long id) {
+        reservationService.deleteReservationById(id);
+    }
 }

@@ -21,15 +21,19 @@ public class Reservation {
     @ManyToOne()
     public Customer renter;
 
+    @OneToOne()
+    public CarListing carListing;
+
     public Reservation() {
     }
 
-    public Reservation(LocalDate reservationDate, LocalDate returnDate, boolean reservationFinal, String termsAndConditions, Customer renter) {
+    public Reservation(LocalDate reservationDate, LocalDate returnDate, boolean reservationFinal, String termsAndConditions, Customer renter, CarListing carListing) {
         this.reservationDate = reservationDate;
         this.returnDate = returnDate;
         this.reservationFinal = reservationFinal;
         this.termsAndConditions = termsAndConditions;
         this.renter = renter;
+        this.carListing = carListing;
     }
 
 }
