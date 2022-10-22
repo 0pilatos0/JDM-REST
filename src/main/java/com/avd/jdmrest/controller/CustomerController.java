@@ -2,6 +2,7 @@ package com.avd.jdmrest.controller;
 
 import com.avd.jdmrest.domain.Customer;
 import com.avd.jdmrest.services.CustomerService;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.Optional;
@@ -29,5 +30,15 @@ public class CustomerController {
 	@PostMapping
 	public Customer createCustomer(@RequestBody Customer customer) {
 		return customerService.createCustomer(customer);
+	}
+
+	@DeleteMapping("/{id}")
+	public ResponseEntity<String> deleteCustomer(@PathVariable Long id) {
+		if (customerService.getById(id).isPresent()) {
+			customerService.deleteById(id);
+			return ResponseEntity.ok("Customer deleted");
+		} else {
+			return ResponseEntity.notFound().build();
+		}
 	}
 }

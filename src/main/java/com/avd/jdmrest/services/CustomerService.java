@@ -10,4 +10,6 @@ public interface CustomerService
 	Optional<Customer> getById(Long id);
 
 	Customer createCustomer(Customer user);
+
+	void deleteById(Long id);
 }
