@@ -26,11 +26,10 @@ public class CustomerController {
 		return customerService.getAll();
 	}
 
-
 	/**
 	 * create a new customer
-	 * @param customer
-	 * @return
+	 * @param customer customer
+	 * @return Customer
 	 */
 	@PostMapping
 	public Customer createCustomer(@RequestBody Customer customer) {
@@ -39,8 +38,8 @@ public class CustomerController {
 
 	/**
 	 * retrieves a customer by id
-	 * @param id
-	 * @return
+	 * @param id customer id
+	 * @return ResponseEntity<Customer>
 	 */
 	@DeleteMapping("/{id}")
 	public ResponseEntity<String> deleteCustomer(@PathVariable Long id) {
@@ -54,8 +53,8 @@ public class CustomerController {
 
 	/**
 	 * delete customer by id
-	 * @param id
-	 * @return ResponseEntity
+	 * @param id customer id
+	 * @return ResponseEntity<Customer>
 	 */
 	@PutMapping("/{id}")
 	public ResponseEntity<Customer> updateCustomer(@PathVariable Long id, @RequestBody Customer customer) {
@@ -75,8 +74,8 @@ public class CustomerController {
 
 	/**
 	 * update customer by id
-	 * @param id
-	 * @return ResponseEntity
+	 * @param id customer id
+	 * @return ResponseEntity<Customer>
 	 */
 	@GetMapping("/{id}")
 	public ResponseEntity<Customer> getCustomerById(@PathVariable Long id) {

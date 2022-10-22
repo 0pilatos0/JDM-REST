@@ -18,7 +18,7 @@ public class ReservationController {
 
     /**
      * retrieve all reservations
-     * @return
+     * @return Iterable<Reservation>
      */
 
     @GetMapping
@@ -28,8 +28,8 @@ public class ReservationController {
 
     /**
      * create a new reservation
-     * @param reservation
-     * @return
+     * @param reservation reservation
+     * @return Reservation
      */
     @PostMapping
     public Reservation createReservation(@RequestBody Reservation reservation) {
@@ -38,8 +38,8 @@ public class ReservationController {
 
     /**
      * retrieves a reservation by id
-     * @param id
-     * @return
+     * @param id reservation id
+     * @return ResponseEntity<Reservation>
      */
 
     @GetMapping("/{id}")
@@ -50,8 +50,8 @@ public class ReservationController {
 
     /**
      * delete reservation by id
-     * @param id
-     * @return ResponseEntity
+     * @param id reservation id
+     * @return ResponseEntity<String>
      */
     @DeleteMapping("/{id}")
     public ResponseEntity<String> deleteReservationById(@PathVariable Long id) {
@@ -66,9 +66,9 @@ public class ReservationController {
 
     /**
      * update a reservation based of the id
-     * @param id
-     * @param reservation
-     * @return
+     * @param id reservation id
+     * @param reservation reservation
+     * @return ResponseEntity<Reservation>
      */
 
     @PutMapping("/{id}")
@@ -96,8 +96,8 @@ public class ReservationController {
 
     /**
      * finalizes a reservation by setting the reservationFinal field to true
-     * @param id
-     * @return
+     * @param id reservation id
+     * @return ResponseEntity<Reservation>
      */
     @PutMapping("/final/{id}")
     public ResponseEntity<Reservation> finalReservation(@PathVariable Long id) {

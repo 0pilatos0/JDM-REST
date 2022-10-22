@@ -17,7 +17,7 @@ public class CarListingController {
 
     /**
      * retrieve all cars
-     * @return
+     * @return Iterable<CarListing>
      */
     @GetMapping
     public Iterable<CarListing> getAllCars() {
@@ -26,8 +26,8 @@ public class CarListingController {
 
     /**
      * create a new car
-     * @param id
-     * @return
+     * @param id car id
+     * @return ResponseEntity<CarListing>
      */
     @GetMapping("/{id}")
     public ResponseEntity<CarListing> getCarById(@PathVariable Long id) {
@@ -40,8 +40,8 @@ public class CarListingController {
 
     /**
      * create a new car
-     * @param carListing
-     * @return
+     * @param carListing car
+     * @return ResponseEntity<CarListing>
      */
     @PostMapping
     public CarListing createCar(@RequestBody CarListing carListing) {
@@ -50,8 +50,8 @@ public class CarListingController {
 
     /**
      * delete car by id
-     * @param id
-     * @return ResponseEntity
+     * @param id car id
+     * @return ResponseEntity<String>
      */
     @DeleteMapping("/{id}")
     public ResponseEntity<String> deleteCarById(@PathVariable Long id) {
@@ -66,9 +66,9 @@ public class CarListingController {
 
     /**
      * update car by id
-     * @param id
-     * @param carListing
-     * @return ResponseEntity
+     * @param id car id
+     * @param carListing car
+     * @return ResponseEntity<CarListing>
      */
     @PutMapping("/{id}")
     public ResponseEntity<CarListing> updateCar(@PathVariable Long id, @RequestBody CarListing carListing) {
