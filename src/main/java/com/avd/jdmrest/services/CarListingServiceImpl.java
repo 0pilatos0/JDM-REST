@@ -52,4 +52,18 @@ public class CarListingServiceImpl implements CarListingService
 	public void deleteById(Long id) {
 		carListingRepository.deleteById(id);
 	}
+
+	@Override
+	public Double getTCO(CarListing carListing) {
+		switch (carListing.getCarType()) {
+			case ICE:
+				return (double)carListing.price * 10000.0;
+			case BEV:
+				return (double)carListing.price * 15000.0;
+			case FCEV:
+				return (double)carListing.price * 20000.0;
+			default:
+				return 0.0;
+		}
+	}
 }

@@ -92,4 +92,13 @@ public class CarListingController {
 
         }
     }
+
+    @GetMapping("/tco/{id}")
+    public ResponseEntity<Double> getTCO(@PathVariable Long id) {
+        if (carListingService.getById(id).isPresent()) {
+            return ResponseEntity.ok(carListingService.getTCO(carListingService.getById(id).get()));
+        } else {
+            return ResponseEntity.notFound().build();
+        }
+    }
 }

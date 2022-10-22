@@ -34,4 +34,7 @@ public interface CarListingService
 	 */
 
     void deleteById(Long id);
+
+
+	Double getTCO(CarListing carListing);
 }
