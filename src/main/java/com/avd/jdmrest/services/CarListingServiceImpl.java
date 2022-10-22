@@ -30,4 +30,9 @@ public class CarListingServiceImpl implements CarListingService
 	public CarListing createCar(CarListing carListing) {
 		return carListingRepository.save(carListing);
 	}
+
+	@Override
+	public void deleteById(Long id) {
+		carListingRepository.deleteById(id);
+	}
 }

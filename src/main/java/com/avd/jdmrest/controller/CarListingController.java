@@ -36,6 +36,17 @@ public class CarListingController {
         return carListingService.createCar(carListing);
     }
 
+    @DeleteMapping("/{id}")
+    public ResponseEntity<String> deleteCarById(@PathVariable Long id) {
+        if(carListingService.getById(id).isPresent()) {
+            carListingService.deleteById(id);
+            return ResponseEntity.ok("Car deleted");
+        }
+        else {
+            return ResponseEntity.notFound().build();
+        }
+    }
+
     @PutMapping("/{id}")
     public ResponseEntity<CarListing> updateCar(@PathVariable Long id, @RequestBody CarListing carListing) {
         if (carListingService.getById(id).isPresent()) {

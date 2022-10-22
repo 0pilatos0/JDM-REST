@@ -10,4 +10,6 @@ public interface CarListingService
 	Optional<CarListing> getById(Long id);
 
 	CarListing createCar(CarListing carListing);
+
+    void deleteById(Long id);
 }
