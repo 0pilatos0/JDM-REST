@@ -41,4 +41,26 @@ public class ReservationController {
             return ResponseEntity.notFound().build();
         }
     }
+
+    @PutMapping("/{id}")
+    public ResponseEntity<Reservation> updateReservation(@PathVariable Long id, @RequestBody Reservation reservation) {
+        if(reservationService.getById(id).isPresent()) {
+            Reservation reservationToUpdate = reservationService.getById(id).get();
+
+            reservationToUpdate.setReservationDate(reservation.getReservationDate());
+            reservationToUpdate.setReservationFinal(reservation.isReservationFinal());
+            reservationToUpdate.setTermsAndConditions(reservation.getTermsAndConditions());
+            reservationToUpdate.setReturnDate(reservation.getReturnDate());
+
+            reservationToUpdate.setRenter(reservation.getRenter());
+            reservationToUpdate.setCarListing(reservation.getCarListing());
+
+
+            reservationService.createReservation(reservationToUpdate);
+            return ResponseEntity.ok(reservationToUpdate);
+        }
+        else {
+            return ResponseEntity.notFound().build();
+        }
+    }
 }
