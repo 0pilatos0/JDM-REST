@@ -1,16 +1,13 @@
 package com.avd.jdmrest.repository;
 
-import com.avd.jdmrest.domain.Brand;
-import com.avd.jdmrest.domain.CarListing;
-import com.avd.jdmrest.domain.CarType;
-import com.avd.jdmrest.domain.Customer;
+import com.avd.jdmrest.domain.*;
 import org.springframework.stereotype.Component;
 
 import java.time.LocalDate;
 
 @Component
 public class DbInitializer {
-    public DbInitializer(CustomerRepository customerRepository, CarListingRepository carListingRepository) {
+    public DbInitializer(CustomerRepository customerRepository, CarListingRepository carListingRepository, ReservationRepository reservationRepository) {
         //super coole initializer ding die er voor zorgt dat er iets van testdata is
         Customer customer1 = new Customer("John",  LocalDate.of(1990, 1, 1), "1234", "1234");
         Customer customer2 = new Customer("Jane",  LocalDate.of(1990, 1, 1), "1234", "1234");
@@ -27,5 +24,13 @@ public class DbInitializer {
         carListingRepository.save(carListing1);
         carListingRepository.save(carListing2);
         carListingRepository.save(carListing3);
+
+        Reservation reservation1 = new Reservation(LocalDate.of(2020, 1, 1), LocalDate.of(2020, 1, 8), true, "I agree to the terms and conditions", customer1);
+        Reservation reservation2 = new Reservation(LocalDate.of(2020, 1, 1), LocalDate.of(2020, 1, 8), true, "I agree to the terms and conditions", customer2);
+        Reservation reservation3 = new Reservation(LocalDate.of(2020, 1, 1), LocalDate.of(2020, 1, 8), true, "I agree to the terms and conditions", customer3);
+
+        reservationRepository.save(reservation1);
+        reservationRepository.save(reservation2);
+        reservationRepository.save(reservation3);
     }
 }
