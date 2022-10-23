@@ -10,6 +10,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import java.util.List;
 
 @Entity
 public class CarListing {
@@ -49,6 +50,9 @@ public class CarListing {
     @Setter
     public String description;
 
+    @ElementCollection
+    public List<String> images;
+
     public CarListing() {
 
     }
@@ -61,7 +65,7 @@ public class CarListing {
         this.owner = owner;
     }
 
-    public CarListing(String licensePlate, Brand brand, CarType carType, String color, int price, double costPerKilometer, Customer owner, int seats, String description) {
+    public CarListing(String licensePlate, Brand brand, CarType carType, String color, int price, double costPerKilometer, Customer owner, int seats, String description, List<String> images) {
         this.licensePlate = licensePlate;
         this.brand = brand;
         this.carType = carType;
@@ -71,6 +75,8 @@ public class CarListing {
         this.owner = owner;
         this.seats = seats;
         this.description = description;
+        this.images = images;
+
     }
 }
 
