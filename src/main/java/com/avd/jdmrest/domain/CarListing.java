@@ -2,6 +2,7 @@ package com.avd.jdmrest.domain;
 
 import lombok.Getter;
 import lombok.Setter;
+import org.hibernate.annotations.Cascade;
 import org.hibernate.annotations.OnDelete;
 import org.hibernate.annotations.OnDeleteAction;
 
@@ -40,7 +41,7 @@ public class CarListing {
     @Getter
     @Setter
     @ManyToOne()
-    @JoinColumn(name = "owner_id")
+    @JoinColumn(name = "customer_id")
     @OnDelete(action = OnDeleteAction.CASCADE)
     private Customer owner;
     @Getter
@@ -50,19 +51,13 @@ public class CarListing {
     @Setter
     public String description;
 
+    @OnDelete(action = OnDeleteAction.CASCADE)
+    @JoinColumn(name = "carListing_id")
     @ElementCollection
     public List<String> images;
 
     public CarListing() {
 
-    }
-
-    public Customer getOwner() {
-        return owner;
-    }
-
-    public void setOwner(Customer owner) {
-        this.owner = owner;
     }
 
     public CarListing(String licensePlate, Brand brand, CarType carType, String color, int price, double costPerKilometer, Customer owner, int seats, String description, List<String> images) {
