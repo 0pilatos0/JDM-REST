@@ -1,14 +1,13 @@
 package com.avd.jdmrest.services;
 
 import com.avd.jdmrest.domain.Customer;
-import com.avd.jdmrest.repository.CarListingRepository;
 import com.avd.jdmrest.repository.CustomerRepository;
 import org.springframework.stereotype.Service;
 
 import java.util.Optional;
 
 @Service
-public class CustomerServiceImpl implements CustomerService {
+public class CustomerServiceImpl extends AbstractServiceImpl implements CustomerService {
     private final CustomerRepository customerRepository;
 
     public CustomerServiceImpl(CustomerRepository customerRepository) {

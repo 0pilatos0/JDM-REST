@@ -4,7 +4,7 @@ import com.avd.jdmrest.domain.Reservation;
 
 import java.util.Optional;
 
-public interface ReservationService {
+public interface ReservationService extends AbstractService{
 
     /**
      * Get all reservations
@@ -35,4 +35,5 @@ public interface ReservationService {
      */
 
     void deleteReservationById(Long id);
+
 }

@@ -7,7 +7,7 @@ import org.springframework.stereotype.Service;
 import java.util.Optional;
 
 @Service
-public class ReservationServiceImpl implements ReservationService{
+public class ReservationServiceImpl extends AbstractServiceImpl implements ReservationService{
 
     private final ReservationRepository reservationRepository;
 

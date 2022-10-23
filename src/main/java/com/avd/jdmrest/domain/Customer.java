@@ -23,10 +23,10 @@ public class Customer {
 
 	@Getter
 	@Setter
-	public String address;
+	private String address;
 	@Getter
 	@Setter
-	public String phoneNumber;
+	private String phoneNumber;
 
 	public Customer() {
 	}
