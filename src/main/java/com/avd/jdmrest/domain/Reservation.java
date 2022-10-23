@@ -30,6 +30,12 @@ public class Reservation {
     @Setter
     public String termsAndConditions;
 
+    @Getter
+    @Setter
+    @ManyToOne
+    @JoinColumn(name = "rent_conditions_ID")
+    public RentCondition rentConditions;
+
 
     @Getter
     @Setter
@@ -48,12 +54,14 @@ public class Reservation {
     public Reservation() {
     }
 
-    public Reservation(LocalDate reservationDate, LocalDate returnDate, boolean reservationFinal, String termsAndConditions, Customer renter, CarListing carListing) {
+    public Reservation(LocalDate reservationDate, LocalDate returnDate, boolean reservationFinal, String termsAndConditions, Customer renter, CarListing carListing, RentCondition rentConditions) {
         this.reservationDate = reservationDate;
         this.returnDate = returnDate;
         this.reservationFinal = reservationFinal;
         this.termsAndConditions = termsAndConditions;
         this.renter = renter;
         this.carListing = carListing;
+        this.rentConditions = rentConditions;
+
     }
 }

@@ -7,7 +7,7 @@ import java.time.LocalDate;
 
 @Component
 public class DbInitializer {
-    public DbInitializer(CustomerRepository customerRepository, CarListingRepository carListingRepository, ReservationRepository reservationRepository) {
+    public DbInitializer(CustomerRepository customerRepository, CarListingRepository carListingRepository, ReservationRepository reservationRepository, RentConditionRepository rentConditionRepository) {
         //super coole initializer ding die er voor zorgt dat er iets van testdata is
         Customer customer1 = new Customer("John",  LocalDate.of(1990, 1, 1), "1234", "1234");
         Customer customer2 = new Customer("Jane",  LocalDate.of(1990, 1, 1), "1234", "1234");
@@ -25,9 +25,13 @@ public class DbInitializer {
         carListingRepository.save(carListing2);
         carListingRepository.save(carListing3);
 
-        Reservation reservation1 = new Reservation(LocalDate.of(2020, 1, 1), LocalDate.of(2020, 1, 8), true, "I agree to the terms and conditions", customer1, carListing1);
-        Reservation reservation2 = new Reservation(LocalDate.of(2020, 1, 1), LocalDate.of(2020, 1, 8), true, "I agree to the terms and conditions", customer2, carListing2);
-        Reservation reservation3 = new Reservation(LocalDate.of(2020, 1, 1), LocalDate.of(2020, 1, 8), true, "I agree to the terms and conditions", customer3, carListing3);
+        RentCondition rentCondition1 = new RentCondition(LocalDate.of(2020, 1, 1), "4254EE", "47");
+
+        rentConditionRepository.save(rentCondition1);
+
+        Reservation reservation1 = new Reservation(LocalDate.of(2020, 1, 1), LocalDate.of(2020, 1, 8), true, "I agree to the terms and conditions", customer1, carListing1, rentCondition1);
+        Reservation reservation2 = new Reservation(LocalDate.of(2020, 1, 1), LocalDate.of(2020, 1, 8), true, "I agree to the terms and conditions", customer2, carListing2, rentCondition1);
+        Reservation reservation3 = new Reservation(LocalDate.of(2020, 1, 1), LocalDate.of(2020, 1, 8), true, "I agree to the terms and conditions", customer3, carListing3, rentCondition1);
 
         reservationRepository.save(reservation1);
         reservationRepository.save(reservation2);
