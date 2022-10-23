@@ -13,6 +13,11 @@ public class RentConditionServiceImpl implements RentConditionService {
         this.rentConditionRepository = rentConditionRepository;
     }
 
+    /**
+     * @InheritDoc
+     * @param rentCondition rent condition
+     * @return RentCondition
+     */
     @Override
     public RentCondition createRentCondition(RentCondition rentCondition) {
         return rentConditionRepository.save(rentCondition);
