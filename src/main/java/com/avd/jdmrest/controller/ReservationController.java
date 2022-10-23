@@ -1,6 +1,7 @@
 package com.avd.jdmrest.controller;
 
 import com.avd.jdmrest.domain.Reservation;
+import com.avd.jdmrest.services.RentConditionService;
 import com.avd.jdmrest.services.ReservationService;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -11,9 +12,11 @@ import java.util.Optional;
 @RequestMapping("/reservation")
 public class ReservationController {
     private final ReservationService reservationService;
+    private final RentConditionService rentConditionService;
 
-    public ReservationController(ReservationService reservationService) {
+    public ReservationController(ReservationService reservationService, RentConditionService rentConditionService) {
         this.reservationService = reservationService;
+        this.rentConditionService = rentConditionService;
     }
 
     /**
@@ -33,6 +36,7 @@ public class ReservationController {
      */
     @PostMapping
     public Reservation createReservation(@RequestBody Reservation reservation) {
+        rentConditionService.createRentCondition(reservation.getRentConditions());
         return reservationService.createReservation(reservation);
     }
 
