@@ -1,3 +1,2 @@
-# JDM-REST
+# JDM-REST (Rent my awesome car)
 
-bjorn was here
