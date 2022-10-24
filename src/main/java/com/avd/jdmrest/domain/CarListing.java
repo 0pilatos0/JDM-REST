@@ -2,7 +2,6 @@ package com.avd.jdmrest.domain;
 
 import lombok.Getter;
 import lombok.Setter;
-import org.hibernate.annotations.Cascade;
 import org.hibernate.annotations.OnDelete;
 import org.hibernate.annotations.OnDeleteAction;
 
@@ -11,6 +10,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.validation.constraints.NotNull;
 import java.util.List;
 
 @Entity
@@ -22,38 +22,48 @@ public class CarListing {
 
     @Getter
     @Setter
+    @NotNull
     private String licensePlate;
     @Getter
     @Setter
+    @NotNull
     public Brand brand;
     @Getter
     @Setter
+    @NotNull
     public CarType carType;
     @Getter
     @Setter
+    @NotNull
     public String color;
     @Getter
     @Setter
+    @NotNull
     public int price;
     @Getter
     @Setter
+    @NotNull
     public double costPerKilometer;
     @Getter
     @Setter
     @ManyToOne()
     @JoinColumn(name = "customer_id")
     @OnDelete(action = OnDeleteAction.CASCADE)
+    @NotNull
     private Customer owner;
     @Getter
     @Setter
+    @NotNull
     public int seats;
     @Getter
     @Setter
+    @NotNull
     public String description;
 
     @OnDelete(action = OnDeleteAction.CASCADE)
     @JoinColumn(name = "carListing_id")
     @ElementCollection
+    @NotNull
     public List<String> images;
 
     public CarListing() {

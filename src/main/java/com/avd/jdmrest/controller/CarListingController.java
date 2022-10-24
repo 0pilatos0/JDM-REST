@@ -2,8 +2,13 @@ package com.avd.jdmrest.controller;
 
 import com.avd.jdmrest.domain.CarListing;
 import com.avd.jdmrest.services.CarListingService;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.MethodArgumentNotValidException;
 import org.springframework.web.bind.annotation.*;
+
+import javax.validation.Valid;
+import java.util.Map;
 
 @RestController
 @RequestMapping("/car")
@@ -47,7 +52,7 @@ public class CarListingController extends AbstractController{
      * @return ResponseEntity<CarListing>
      */
     @PostMapping
-    public CarListing createCar(@RequestBody CarListing carListing) {
+    public CarListing createCar(@Valid @RequestBody CarListing carListing) {
         log("createCar");
         return carListingService.createCar(carListing);
     }
@@ -77,7 +82,7 @@ public class CarListingController extends AbstractController{
      * @return ResponseEntity<CarListing>
      */
     @PutMapping("/{id}")
-    public ResponseEntity<CarListing> updateCar(@PathVariable Long id, @RequestBody CarListing carListing) {
+    public ResponseEntity<CarListing> updateCar(@PathVariable Long id,@Valid @RequestBody CarListing carListing) {
         if (carListingService.getById(id).isPresent()) {
             log("updateCar found", id);
             CarListing carToUpdate = carListingService.getById(id).get();
@@ -121,5 +126,11 @@ public class CarListingController extends AbstractController{
             log("getCPKM not found", id);
             return ResponseEntity.notFound().build();
         }
+    }
+
+    @ResponseStatus(HttpStatus.BAD_REQUEST)
+    @ExceptionHandler(MethodArgumentNotValidException.class)
+    public Map<String, String> handleValidationExceptions( MethodArgumentNotValidException ex) {
+        return handleErrors(ex);
     }
 }

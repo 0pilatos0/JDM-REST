@@ -2,10 +2,13 @@ package com.avd.jdmrest.controller;
 
 import com.avd.jdmrest.domain.Customer;
 import com.avd.jdmrest.services.CustomerService;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.MethodArgumentNotValidException;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.Optional;
+import javax.validation.Valid;
+import java.util.Map;
 
 @RestController
 @RequestMapping("/customer")
@@ -19,7 +22,7 @@ public class CustomerController extends AbstractController {
 
 	/**
 	 * retrieve all customers
-	 * @return
+	 * @return Iterable<Customer>
 	 */
 	@GetMapping
 	public Iterable<Customer> getAllCustomers() {
@@ -33,7 +36,7 @@ public class CustomerController extends AbstractController {
 	 * @return Customer
 	 */
 	@PostMapping
-	public Customer createCustomer(@RequestBody Customer customer) {
+	public Customer createCustomer(@Valid @RequestBody Customer customer) {
 		log("createCustomer");
 		return customerService.createCustomer(customer);
 	}
@@ -44,7 +47,7 @@ public class CustomerController extends AbstractController {
 	 * @return ResponseEntity<Customer>
 	 */
 	@DeleteMapping("/{id}")
-	public ResponseEntity<String> deleteCustomer(@PathVariable Long id) {
+	public ResponseEntity<String> deleteCustomer(@Valid @PathVariable Long id) {
 		if (customerService.getById(id).isPresent()) {
 			log("deleteCustomer found", id);
 			customerService.deleteById(id);
@@ -61,7 +64,7 @@ public class CustomerController extends AbstractController {
 	 * @return ResponseEntity<Customer>
 	 */
 	@PutMapping("/{id}")
-	public ResponseEntity<Customer> updateCustomer(@PathVariable Long id, @RequestBody Customer customer) {
+	public ResponseEntity<Customer> updateCustomer(@PathVariable Long id, @Valid @RequestBody Customer customer) {
 		if (customerService.getById(id).isPresent()) {
 			log("updateCustomer found", id);
 			Customer customerToUpdate = customerService.getById(id).get();
@@ -92,5 +95,11 @@ public class CustomerController extends AbstractController {
 			log("getCustomerById not found", id);
 			return ResponseEntity.notFound().build();
 		}
+	}
+
+	@ResponseStatus(HttpStatus.BAD_REQUEST)
+	@ExceptionHandler(MethodArgumentNotValidException.class)
+	public Map<String, String> handleValidationExceptions( MethodArgumentNotValidException ex) {
+		return handleErrors(ex);
 	}
 }

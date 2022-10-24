@@ -4,6 +4,7 @@ import lombok.Getter;
 import lombok.Setter;
 
 import javax.persistence.*;
+import javax.validation.constraints.NotNull;
 import java.time.LocalDate;
 
 @Entity
@@ -15,17 +16,21 @@ public class Customer {
 
 	@Getter
 	@Setter
+	@NotNull
 	private String username;
 
 	@Getter
 	@Setter
+	@NotNull
 	private LocalDate dateOfBirth;
 
 	@Getter
 	@Setter
+	@NotNull
 	private String address;
 	@Getter
 	@Setter
+	@NotNull
 	private String phoneNumber;
 
 	public Customer() {

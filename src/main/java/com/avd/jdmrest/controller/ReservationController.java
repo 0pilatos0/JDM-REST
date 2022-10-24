@@ -3,10 +3,13 @@ package com.avd.jdmrest.controller;
 import com.avd.jdmrest.domain.Reservation;
 import com.avd.jdmrest.services.RentConditionService;
 import com.avd.jdmrest.services.ReservationService;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.MethodArgumentNotValidException;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.Optional;
+import javax.validation.Valid;
+import java.util.Map;
 
 @RestController
 @RequestMapping("/reservation")
@@ -36,7 +39,7 @@ public class ReservationController extends AbstractController {
      * @return Reservation
      */
     @PostMapping
-    public Reservation createReservation(@RequestBody Reservation reservation) {
+    public Reservation createReservation(@Valid @RequestBody Reservation reservation) {
         log("createReservation");
         rentConditionService.createRentCondition(reservation.getRentConditions());
         return reservationService.createReservation(reservation);
@@ -86,7 +89,7 @@ public class ReservationController extends AbstractController {
      */
 
     @PutMapping("/{id}")
-    public ResponseEntity<Reservation> updateReservation(@PathVariable Long id, @RequestBody Reservation reservation) {
+    public ResponseEntity<Reservation> updateReservation(@PathVariable Long id, @Valid @RequestBody Reservation reservation) {
         if(reservationService.getById(id).isPresent()) {
             log("updateReservation found", id);
             Reservation reservationToUpdate = reservationService.getById(id).get();
@@ -128,5 +131,10 @@ public class ReservationController extends AbstractController {
             log("finalReservation not found", id);
             return ResponseEntity.notFound().build();
         }
+    }
+    @ResponseStatus(HttpStatus.BAD_REQUEST)
+    @ExceptionHandler(MethodArgumentNotValidException.class)
+    public Map<String, String> handleValidationExceptions( MethodArgumentNotValidException ex) {
+        return handleErrors(ex);
     }
 }
