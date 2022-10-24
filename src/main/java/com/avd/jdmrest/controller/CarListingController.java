@@ -79,6 +79,7 @@ public class CarListingController extends AbstractController{
     @PutMapping("/{id}")
     public ResponseEntity<CarListing> updateCar(@PathVariable Long id, @RequestBody CarListing carListing) {
         if (carListingService.getById(id).isPresent()) {
+            log("updateCar found", id);
             CarListing carToUpdate = carListingService.getById(id).get();
 
             carToUpdate.setBrand(carListing.getBrand());
@@ -94,6 +95,7 @@ public class CarListingController extends AbstractController{
             carListingService.createCar(carToUpdate);
             return ResponseEntity.ok(carToUpdate);
         } else {
+            log("updateCar not found", id);
             return ResponseEntity.notFound().build();
 
         }
@@ -102,8 +104,10 @@ public class CarListingController extends AbstractController{
     @GetMapping("/tco/{id}")
     public ResponseEntity<Double> getTCO(@PathVariable Long id) {
         if (carListingService.getById(id).isPresent()) {
+            log("getTCO found", id);
             return ResponseEntity.ok(carListingService.getTCO(carListingService.getById(id).get()));
         } else {
+            log("getTCO not found", id);
             return ResponseEntity.notFound().build();
         }
     }
@@ -111,8 +115,10 @@ public class CarListingController extends AbstractController{
     @GetMapping("/cpk/{id}")
     public ResponseEntity<Double> getCPKM(@PathVariable Long id) {
         if (carListingService.getById(id).isPresent()) {
+            log("getCPKM found", id);
             return ResponseEntity.ok(carListingService.getById(id).get().costPerKilometer);
         } else {
+            log("getCPKM not found", id);
             return ResponseEntity.notFound().build();
         }
     }
