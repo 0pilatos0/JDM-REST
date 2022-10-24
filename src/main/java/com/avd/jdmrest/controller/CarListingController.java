@@ -7,7 +7,7 @@ import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequestMapping("/car")
-public class CarListingController {
+public class CarListingController extends AbstractController{
 
     private final CarListingService carListingService;
 
@@ -21,6 +21,7 @@ public class CarListingController {
      */
     @GetMapping
     public Iterable<CarListing> getAllCars() {
+        log("getAllCars");
         return carListingService.getAll();
     }
 
@@ -32,8 +33,10 @@ public class CarListingController {
     @GetMapping("/{id}")
     public ResponseEntity<CarListing> getCarById(@PathVariable Long id) {
         if (carListingService.getById(id).isPresent()) {
+            log("getCarById found", id);
             return ResponseEntity.ok(carListingService.getById(id).get());
         } else {
+            log("getCarById not found", id);
             return ResponseEntity.notFound().build();
         }
     }
@@ -45,6 +48,7 @@ public class CarListingController {
      */
     @PostMapping
     public CarListing createCar(@RequestBody CarListing carListing) {
+        log("createCar");
         return carListingService.createCar(carListing);
     }
 
@@ -56,10 +60,12 @@ public class CarListingController {
     @DeleteMapping("/{id}")
     public ResponseEntity<String> deleteCarById(@PathVariable Long id) {
         if(carListingService.getById(id).isPresent()) {
+            log("deleteCarById found", id);
             carListingService.deleteById(id);
             return ResponseEntity.ok("Car deleted");
         }
         else {
+            log("deleteCarById not found", id);
             return ResponseEntity.notFound().build();
         }
     }

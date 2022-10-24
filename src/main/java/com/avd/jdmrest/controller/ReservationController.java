@@ -10,7 +10,7 @@ import java.util.Optional;
 
 @RestController
 @RequestMapping("/reservation")
-public class ReservationController {
+public class ReservationController extends AbstractController {
     private final ReservationService reservationService;
     private final RentConditionService rentConditionService;
 
@@ -26,6 +26,7 @@ public class ReservationController {
 
     @GetMapping
     public Iterable<Reservation> getAllReservations() {
+        log("getAllReservations");
         return reservationService.getAll();
     }
 
@@ -36,6 +37,7 @@ public class ReservationController {
      */
     @PostMapping
     public Reservation createReservation(@RequestBody Reservation reservation) {
+        log("createReservation");
         rentConditionService.createRentCondition(reservation.getRentConditions());
         return reservationService.createReservation(reservation);
     }
@@ -47,8 +49,14 @@ public class ReservationController {
      */
 
     @GetMapping("/{id}")
-    public Optional<Reservation> getReservationById(@PathVariable Long id) {
-        return reservationService.getById(id);
+    public ResponseEntity<Reservation> getReservationById(@PathVariable Long id) {
+        if(reservationService.getById(id).isPresent()) {
+            log("getReservationById found", id);
+            return ResponseEntity.ok(reservationService.getById(id).get());
+        } else {
+            log("getReservationById not found", id);
+            return ResponseEntity.notFound().build();
+        }
     }
 
 
@@ -60,10 +68,12 @@ public class ReservationController {
     @DeleteMapping("/{id}")
     public ResponseEntity<String> deleteReservationById(@PathVariable Long id) {
         if(reservationService.getById(id).isPresent()) {
+            log("deleteReservationById found", id);
             reservationService.deleteReservationById(id);
             return ResponseEntity.ok("Reservation deleted");
         }
         else {
+            log("deleteReservationById not found", id);
             return ResponseEntity.notFound().build();
         }
     }
@@ -78,6 +88,7 @@ public class ReservationController {
     @PutMapping("/{id}")
     public ResponseEntity<Reservation> updateReservation(@PathVariable Long id, @RequestBody Reservation reservation) {
         if(reservationService.getById(id).isPresent()) {
+            log("updateReservation found", id);
             Reservation reservationToUpdate = reservationService.getById(id).get();
 
             reservationToUpdate.setReservationDate(reservation.getReservationDate());
@@ -93,6 +104,7 @@ public class ReservationController {
             return ResponseEntity.ok(reservationToUpdate);
         }
         else {
+            log("updateReservation not found", id);
             return ResponseEntity.notFound().build();
         }
     }
@@ -106,12 +118,14 @@ public class ReservationController {
     @PutMapping("/final/{id}")
     public ResponseEntity<Reservation> finalReservation(@PathVariable Long id) {
         if(reservationService.getById(id).isPresent()) {
+            log("finalReservation found", id);
             Reservation reservationToUpdate = reservationService.getById(id).get();
             reservationToUpdate.setReservationFinal(true);
             reservationService.createReservation(reservationToUpdate);
             return ResponseEntity.ok(reservationToUpdate);
         }
         else {
+            log("finalReservation not found", id);
             return ResponseEntity.notFound().build();
         }
     }

@@ -4,7 +4,7 @@ import com.avd.jdmrest.domain.Reservation;
 
 import java.util.Optional;
 
-public interface ReservationService extends AbstractService{
+public interface ReservationService {
 
     /**
      * Get all reservations

@@ -7,7 +7,7 @@ import org.springframework.stereotype.Service;
 import java.util.Optional;
 
 @Service
-public class CarListingServiceImpl extends AbstractServiceImpl implements CarListingService
+public class CarListingServiceImpl implements CarListingService
 {
 	private final CarListingRepository carListingRepository;
 

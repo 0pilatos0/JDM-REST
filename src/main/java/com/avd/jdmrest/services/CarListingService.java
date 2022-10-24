@@ -4,7 +4,7 @@ import com.avd.jdmrest.domain.CarListing;
 
 import java.util.Optional;
 
-public interface CarListingService extends AbstractService
+public interface CarListingService
 {
 	/**
 	 * Get all car listings

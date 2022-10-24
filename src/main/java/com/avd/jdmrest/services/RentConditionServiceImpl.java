@@ -5,7 +5,7 @@ import com.avd.jdmrest.repository.RentConditionRepository;
 import org.springframework.stereotype.Service;
 
 @Service
-public class RentConditionServiceImpl extends AbstractServiceImpl implements RentConditionService {
+public class RentConditionServiceImpl implements RentConditionService {
 
     private RentConditionRepository rentConditionRepository;
 

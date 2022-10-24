@@ -7,7 +7,7 @@ import org.springframework.stereotype.Service;
 import java.util.Optional;
 
 @Service
-public class CustomerServiceImpl extends AbstractServiceImpl implements CustomerService {
+public class CustomerServiceImpl implements CustomerService {
     private final CustomerRepository customerRepository;
 
     public CustomerServiceImpl(CustomerRepository customerRepository) {

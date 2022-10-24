@@ -2,7 +2,7 @@ package com.avd.jdmrest.services;
 
 import com.avd.jdmrest.domain.RentCondition;
 
-public interface RentConditionService extends AbstractService {
+public interface RentConditionService {
 
     /**
      * Create a new rent condition

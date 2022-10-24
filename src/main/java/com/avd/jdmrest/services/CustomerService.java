@@ -4,7 +4,7 @@ import com.avd.jdmrest.domain.Customer;
 
 import java.util.Optional;
 
-public interface CustomerService extends AbstractService
+public interface CustomerService
 {
 	/**
 	 * Get all customers

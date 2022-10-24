@@ -9,7 +9,7 @@ import java.util.Optional;
 
 @RestController
 @RequestMapping("/customer")
-public class CustomerController {
+public class CustomerController extends AbstractController {
 
 	private final CustomerService customerService;
 
@@ -23,6 +23,7 @@ public class CustomerController {
 	 */
 	@GetMapping
 	public Iterable<Customer> getAllCustomers() {
+		log("getAllCustomers");
 		return customerService.getAll();
 	}
 
@@ -33,6 +34,7 @@ public class CustomerController {
 	 */
 	@PostMapping
 	public Customer createCustomer(@RequestBody Customer customer) {
+		log("createCustomer");
 		return customerService.createCustomer(customer);
 	}
 
@@ -44,9 +46,11 @@ public class CustomerController {
 	@DeleteMapping("/{id}")
 	public ResponseEntity<String> deleteCustomer(@PathVariable Long id) {
 		if (customerService.getById(id).isPresent()) {
+			log("deleteCustomer found", id);
 			customerService.deleteById(id);
 			return ResponseEntity.ok("Customer deleted");
 		} else {
+			log("deleteCustomer not found", id);
 			return ResponseEntity.notFound().build();
 		}
 	}
@@ -59,6 +63,7 @@ public class CustomerController {
 	@PutMapping("/{id}")
 	public ResponseEntity<Customer> updateCustomer(@PathVariable Long id, @RequestBody Customer customer) {
 		if (customerService.getById(id).isPresent()) {
+			log("updateCustomer found", id);
 			Customer customerToUpdate = customerService.getById(id).get();
 			customerToUpdate.setUsername(customer.getUsername());
 			customerToUpdate.setAddress(customer.getAddress());
@@ -68,6 +73,7 @@ public class CustomerController {
 			customerService.createCustomer(customerToUpdate);
 			return ResponseEntity.ok(customerToUpdate);
 		} else {
+			log("updateCustomer not found", id);
 			return ResponseEntity.notFound().build();
 		}
 	}
@@ -80,8 +86,10 @@ public class CustomerController {
 	@GetMapping("/{id}")
 	public ResponseEntity<Customer> getCustomerById(@PathVariable Long id) {
 		if (customerService.getById(id).isPresent()) {
+			log("getCustomerById found", id);
 			return ResponseEntity.ok(customerService.getById(id).get());
 		} else {
+			log("getCustomerById not found", id);
 			return ResponseEntity.notFound().build();
 		}
 	}
