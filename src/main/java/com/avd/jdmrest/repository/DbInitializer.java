@@ -9,7 +9,9 @@ import java.util.List;
 @Component
 public class DbInitializer {
     public DbInitializer(CustomerRepository customerRepository, CarListingRepository carListingRepository, ReservationRepository reservationRepository, RentConditionRepository rentConditionRepository) {
-        //super coole initializer ding die er voor zorgt dat er iets van testdata is
+
+        /*Database initialization to help testing the application without having to manually add data to the database.*/
+
         Customer customer1 = new Customer("John",  LocalDate.of(1990, 1, 1), "1234", "1234");
         Customer customer2 = new Customer("Jane",  LocalDate.of(1990, 1, 1), "1234", "1234");
         Customer customer3 = new Customer("Jack",  LocalDate.of(1990, 1, 1), "1234", "1234");
