@@ -66,6 +66,7 @@ public class CarListing {
     @Getter
     @Setter
     @NotNull
+    @Column(length = 100000)
     public List<String> images;
 
     public CarListing() {
