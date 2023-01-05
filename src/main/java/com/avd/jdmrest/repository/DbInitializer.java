@@ -20,7 +20,7 @@ public class DbInitializer {
         customerRepository.save(customer2);
         customerRepository.save(customer3);
 
-        List<String> images = List.of("https://www.google.com/images/branding/googlelogo/1x/googlelogo_color_272x92dp.png", "https://www.google.com/images/branding/googlelogo/1x/googlelogo_color_272x92dp.png");
+        List<String> images = List.of();
 
         CarListing carListing1 = new CarListing("AA-BB-99", Brand.Audi, CarType.ICE, "Black", 25000, 0.05, customer1, 5, "This is a very nice car!", images);
         CarListing carListing2 = new CarListing("CC-DD-11", Brand.Chevrolet, CarType.FCEV, "Red", 35000, 0.06, customer2, 5, "What a classic!", images);
