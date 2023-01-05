@@ -1,6 +1,7 @@
 package com.avd.jdmrest.services;
 
 import com.avd.jdmrest.domain.CarListing;
+import com.avd.jdmrest.domain.Customer;
 import com.avd.jdmrest.repository.CarListingRepository;
 import org.springframework.stereotype.Service;
 
@@ -11,8 +12,11 @@ public class CarListingServiceImpl implements CarListingService
 {
 	private final CarListingRepository carListingRepository;
 
-	public CarListingServiceImpl(CarListingRepository carListingRepository) {
+	private final CustomerService customerService;
+
+	public CarListingServiceImpl(CarListingRepository carListingRepository, CustomerService customerService ) {
 		this.carListingRepository = carListingRepository;
+		this.customerService = customerService;
 	}
 
 	/**
@@ -65,5 +69,11 @@ public class CarListingServiceImpl implements CarListingService
 			default:
 				return 0.0;
 		}
+	}
+
+	@Override
+	public Iterable<CarListing> getCarsByUserId( Long id ) {
+		Customer customer = customerService.getById(id).get();
+		return carListingRepository.getCarListingByOwner(customer);
 	}
 }

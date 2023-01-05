@@ -37,4 +37,6 @@ public interface CarListingService
 
 
 	Double getTCO(CarListing carListing);
+
+	Iterable<CarListing> getCarsByUserId( Long id );
 }

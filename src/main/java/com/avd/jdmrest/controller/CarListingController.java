@@ -1,6 +1,7 @@
 package com.avd.jdmrest.controller;
 
 import com.avd.jdmrest.domain.CarListing;
+import com.avd.jdmrest.domain.Customer;
 import com.avd.jdmrest.services.CarListingService;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -28,6 +29,12 @@ public class CarListingController extends AbstractController{
     public Iterable<CarListing> getAllCars() {
         log("getAllCars");
         return carListingService.getAll();
+    }
+
+    @GetMapping("/user/{id}")
+    public Iterable<CarListing> getCarsByUserId(@PathVariable Long id) {
+        log("getCarsByUserId");
+        return carListingService.getCarsByUserId(id);
     }
 
     /**
