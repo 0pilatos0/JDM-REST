@@ -103,6 +103,7 @@ public class CarListingController extends AbstractController{
             carToUpdate.setDescription(carListing.getDescription());
             carToUpdate.setCostPerKilometer(carListing.getCostPerKilometer());
             carToUpdate.setLicensePlate(carListing.getLicensePlate());
+            carToUpdate.setImages(carListing.getImages());
 
             carListingService.createCar(carToUpdate);
             return ResponseEntity.ok(carToUpdate);

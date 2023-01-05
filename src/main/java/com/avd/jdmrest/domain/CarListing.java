@@ -63,6 +63,8 @@ public class CarListing {
     @OnDelete(action = OnDeleteAction.CASCADE)
     @JoinColumn(name = "carListing_id")
     @ElementCollection
+    @Getter
+    @Setter
     @NotNull
     public List<String> images;
 
