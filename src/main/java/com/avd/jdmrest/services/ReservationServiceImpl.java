@@ -1,5 +1,6 @@
 package com.avd.jdmrest.services;
 
+import com.avd.jdmrest.domain.Customer;
 import com.avd.jdmrest.domain.Reservation;
 import com.avd.jdmrest.repository.ReservationRepository;
 import org.springframework.stereotype.Service;
@@ -10,9 +11,11 @@ import java.util.Optional;
 public class ReservationServiceImpl implements ReservationService{
 
     private final ReservationRepository reservationRepository;
+    private final CustomerService customerService;
 
-    public ReservationServiceImpl(ReservationRepository reservationRepository) {
+    public ReservationServiceImpl(ReservationRepository reservationRepository, CustomerService customerService) {
         this.reservationRepository = reservationRepository;
+        this.customerService = customerService;
     }
 
 
@@ -23,6 +26,12 @@ public class ReservationServiceImpl implements ReservationService{
     @Override
     public Iterable<Reservation> getAll() {
        return reservationRepository.findAll();
+    }
+
+    @Override
+    public Iterable<Reservation> getReservationsByUserId(Long id) {
+        Customer customer = customerService.getById(id).get();
+        return reservationRepository.getReservationByRenter(customer);
     }
 
     /**

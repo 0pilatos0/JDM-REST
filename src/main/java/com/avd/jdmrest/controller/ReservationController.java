@@ -26,11 +26,16 @@ public class ReservationController extends AbstractController {
      * retrieve all reservations
      * @return Iterable<Reservation>
      */
-
     @GetMapping
     public Iterable<Reservation> getAllReservations() {
         log("getAllReservations");
         return reservationService.getAll();
+    }
+
+    @GetMapping("/reservation/{id}")
+    public Iterable<Reservation> getReservationsByUserId(@PathVariable Long id) {
+        log("getReservationsByUserId");
+        return reservationService.getReservationsByUserId(id);
     }
 
     /**
@@ -50,7 +55,6 @@ public class ReservationController extends AbstractController {
      * @param id reservation id
      * @return ResponseEntity<Reservation>
      */
-
     @GetMapping("/{id}")
     public ResponseEntity<Reservation> getReservationById(@PathVariable Long id) {
         if(reservationService.getById(id).isPresent()) {
@@ -87,7 +91,6 @@ public class ReservationController extends AbstractController {
      * @param reservation reservation
      * @return ResponseEntity<Reservation>
      */
-
     @PutMapping("/{id}")
     public ResponseEntity<Reservation> updateReservation(@PathVariable Long id, @Valid @RequestBody Reservation reservation) {
         if(reservationService.getById(id).isPresent()) {

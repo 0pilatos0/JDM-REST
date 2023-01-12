@@ -1,5 +1,6 @@
 package com.avd.jdmrest.services;
 
+import com.avd.jdmrest.domain.CarListing;
 import com.avd.jdmrest.domain.Reservation;
 
 import java.util.Optional;
@@ -12,12 +13,13 @@ public interface ReservationService {
      */
     Iterable<Reservation> getAll();
 
+    Iterable<Reservation> getReservationsByUserId(Long id);
+
     /**
      * Create a new reservation
      * @param reservation reservation
      * @return Reservation
      */
-
     Reservation createReservation(Reservation reservation);
 
     /**
