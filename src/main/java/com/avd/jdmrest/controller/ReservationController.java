@@ -32,7 +32,7 @@ public class ReservationController extends AbstractController {
         return reservationService.getAll();
     }
 
-    @GetMapping("/reservation/{id}")
+    @GetMapping("/user/{id}")
     public Iterable<Reservation> getReservationsByUserId(@PathVariable Long id) {
         log("getReservationsByUserId");
         return reservationService.getReservationsByUserId(id);
