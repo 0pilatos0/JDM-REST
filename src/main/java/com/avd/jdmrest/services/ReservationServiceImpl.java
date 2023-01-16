@@ -64,4 +64,9 @@ public class ReservationServiceImpl implements ReservationService{
     public void deleteReservationById(Long id) {
         reservationRepository.deleteById(id);
     }
+
+    @Override
+    public Iterable<Reservation> getReservationsByCarId(Long id) {
+        return reservationRepository.getReservationsByCarListingId(id);
+    }
 }

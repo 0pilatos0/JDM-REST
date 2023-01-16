@@ -38,4 +38,5 @@ public interface ReservationService {
 
     void deleteReservationById(Long id);
 
+    Iterable<Reservation> getReservationsByCarId(Long id);
 }

@@ -38,6 +38,12 @@ public class ReservationController extends AbstractController {
         return reservationService.getReservationsByUserId(id);
     }
 
+    @GetMapping("/car/{id}")
+    public Iterable<Reservation> getReservationsByCarId(@PathVariable Long id) {
+        log("getReservationsByCarId");
+        return reservationService.getReservationsByCarId(id);
+    }
+
     /**
      * create a new reservation
      * @param reservation reservation
