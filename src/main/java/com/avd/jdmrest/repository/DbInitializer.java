@@ -31,19 +31,11 @@ public class DbInitializer {
         carListingRepository.save(carListing3);
 
         RentCondition rentCondition1 = new RentCondition(LocalDate.of(2020, 1, 1), "4254EE", "47");
-        RentCondition rentCondition2 = new RentCondition(LocalDate.of(2020, 1, 1), "4254EE", "47");
-        RentCondition rentCondition3 = new RentCondition(LocalDate.of(2020, 1, 1), "4254EE", "47");
 
         rentConditionRepository.save(rentCondition1);
-        rentConditionRepository.save(rentCondition2);
-        rentConditionRepository.save(rentCondition3);
 
         Reservation reservation1 = new Reservation(LocalDate.of(2020, 1, 1), LocalDate.of(2020, 1, 8), true, "I agree to the terms and conditions", customer1, carListing1, rentCondition1);
-        Reservation reservation2 = new Reservation(LocalDate.of(2020, 1, 1), LocalDate.of(2020, 1, 8), true, "I agree to the terms and conditions", customer2, carListing2, rentCondition2);
-        Reservation reservation3 = new Reservation(LocalDate.of(2020, 1, 1), LocalDate.of(2020, 1, 8), true, "I agree to the terms and conditions", customer3, carListing3, rentCondition3);
 
         reservationRepository.save(reservation1);
-        reservationRepository.save(reservation2);
-        reservationRepository.save(reservation3);
     }
 }
