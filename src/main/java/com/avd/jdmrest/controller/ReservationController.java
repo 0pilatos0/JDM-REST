@@ -50,6 +50,7 @@ public class ReservationController extends AbstractController {
      * @return Reservation
      */
     @PostMapping
+
     public Reservation createReservation(@Valid @RequestBody Reservation reservation) {
         log("createReservation");
         rentConditionService.createRentCondition(reservation.getRentConditions());

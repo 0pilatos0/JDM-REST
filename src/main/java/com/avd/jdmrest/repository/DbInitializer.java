@@ -8,7 +8,7 @@ import java.util.List;
 
 @Component
 public class DbInitializer {
-    public DbInitializer(CustomerRepository customerRepository, CarListingRepository carListingRepository, ReservationRepository reservationRepository, RentConditionRepository rentConditionRepository) {
+    public DbInitializer(CustomerRepository customerRepository, CarListingRepository carListingRepository, ReservationRepository reservationRepository, RentConditionRepository rentConditionRepository, CarConditionRepository carConditionRepository) {
 
         /*Database initialization to help testing the application without having to manually add data to the database.*/
 
@@ -20,11 +20,19 @@ public class DbInitializer {
         customerRepository.save(customer2);
         customerRepository.save(customer3);
 
+        CarCondition carCondition1 = new CarCondition(VisibleDamageType.Scratches, false, "No");
+        CarCondition carCondition2 = new CarCondition(VisibleDamageType.Dents, false, "The air conditioner is broken.");
+        CarCondition carCondition3 = new CarCondition(VisibleDamageType.WindshieldCrack, true, "The passenger seat window does not roll down.");
+
+        carConditionRepository.save(carCondition1);
+        carConditionRepository.save(carCondition2);
+        carConditionRepository.save(carCondition3);
+
         List<String> images = List.of();
 
-        CarListing carListing1 = new CarListing("AA-BB-99", Brand.Audi, CarType.ICE, "Black", 25000, 0.05, customer1, 5, "This is a very nice car!", images);
-        CarListing carListing2 = new CarListing("CC-DD-11", Brand.Chevrolet, CarType.FCEV, "Red", 35000, 0.06, customer2, 5, "What a classic!", images);
-        CarListing carListing3 = new CarListing("EE-FF-55", Brand.Fiat, CarType.BEV, "Yellow", 17500, 0.09, customer3, 4, "A little old but does the job!", images);
+        CarListing carListing1 = new CarListing("AA-BB-99", Brand.Audi, CarType.ICE, "Black", 25000, 0.05, customer1, 5, "This is a very nice car!", images, carCondition1);
+        CarListing carListing2 = new CarListing("CC-DD-11", Brand.Chevrolet, CarType.FCEV, "Red", 35000, 0.06, customer2, 5, "What a classic!", images, carCondition2);
+        CarListing carListing3 = new CarListing("EE-FF-55", Brand.Fiat, CarType.BEV, "Yellow", 17500, 0.09, customer3, 4, "A little old but does the job!", images, carCondition3);
 
         carListingRepository.save(carListing1);
         carListingRepository.save(carListing2);

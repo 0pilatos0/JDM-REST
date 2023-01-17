@@ -69,11 +69,19 @@ public class CarListing {
     @Column(length = 100000)
     public List<String> images;
 
+    @Getter
+    @Setter
+    @ManyToOne()
+    @JoinColumn(name = "car_condition_id")
+    @OnDelete(action = OnDeleteAction.CASCADE)
+    @NotNull
+    private CarCondition carConditions;
+
     public CarListing() {
 
     }
 
-    public CarListing(String licensePlate, Brand brand, CarType carType, String color, int price, double costPerKilometer, Customer owner, int seats, String description, List<String> images) {
+    public CarListing(String licensePlate, Brand brand, CarType carType, String color, int price, double costPerKilometer, Customer owner, int seats, String description, List<String> images, CarCondition carCondition) {
         this.licensePlate = licensePlate;
         this.brand = brand;
         this.carType = carType;
@@ -84,6 +92,7 @@ public class CarListing {
         this.seats = seats;
         this.description = description;
         this.images = images;
+        this.carConditions = carCondition;
 
     }
 }

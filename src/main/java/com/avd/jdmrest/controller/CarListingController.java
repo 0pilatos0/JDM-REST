@@ -1,8 +1,9 @@
 package com.avd.jdmrest.controller;
 
+import com.avd.jdmrest.domain.CarCondition;
 import com.avd.jdmrest.domain.CarListing;
-import com.avd.jdmrest.domain.Customer;
 import com.avd.jdmrest.services.CarListingService;
+import com.avd.jdmrest.services.CarConditionService;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.MethodArgumentNotValidException;
@@ -16,9 +17,12 @@ import java.util.Map;
 public class CarListingController extends AbstractController{
 
     private final CarListingService carListingService;
+    private final CarConditionService carConditionService;
 
-    public CarListingController(CarListingService carListingService) {
+    public CarListingController(CarListingService carListingService, CarConditionService carConditionService) {
+
         this.carListingService = carListingService;
+        this.carConditionService = carConditionService;
     }
 
     /**
@@ -61,6 +65,7 @@ public class CarListingController extends AbstractController{
     @PostMapping
     public CarListing createCar(@Valid @RequestBody CarListing carListing) {
         log("createCar");
+        carConditionService.createCarCondition(carListing.getCarConditions());
         return carListingService.createCar(carListing);
     }
 
